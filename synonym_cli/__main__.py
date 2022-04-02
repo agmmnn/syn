@@ -1,7 +1,7 @@
 import argparse
 from synonym_cli.cli import Synonym
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 # parse arguments
 ap = argparse.ArgumentParser()
@@ -12,7 +12,11 @@ ap.add_argument(
     help="<word>",
 )
 ap.add_argument(
-    "-p", "--plain", action="store_true", default=False, help="plain text output"
+    "-p",
+    "--plain",
+    action="store_true",
+    default=False,
+    help="returns plain text output",
 )
 ap.add_argument("-v", "--version", action="version", version="%(prog)s v" + __version__)
 args = ap.parse_args()
