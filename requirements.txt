@@ -1,4 +1,2 @@
-requests
-beautifulsoup4
+gazpacho
 rich
-lxml
