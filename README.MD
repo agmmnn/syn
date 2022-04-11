@@ -1,12 +1,13 @@
-![screenshot](https://user-images.githubusercontent.com/16024979/161394207-e1bfecd5-1702-40a7-8d89-3a10b462edee.png)
+![screenshot](https://user-images.githubusercontent.com/16024979/162848437-8da9d5d4-a234-44d3-94d8-048f92b015a6.png)
+
+<div align="center">
+<a alt="Github" href="https://github.com/agmmnn/synonym-cli"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/agmmnn/synonym-cli"></a>
+<a href="https://pypi.org/project/synonym-cli/"><img alt="PyPI" src="https://img.shields.io/pypi/v/synonym-cli"></a>
+</div>
 
 # synonym-cli
 
 <div align="center">
-<a alt="Github" href="https://github.com/agmmnn/synonym-cli">
-<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/agmmnn/synonym-cli"></a>
-<a href="https://pypi.org/project/synonym-cli/">
-<img alt="PyPI" src="https://img.shields.io/pypi/v/synonym-cli"></a>
 
 Synonyms and antonyms of words from [Thesaurus.com](https://www.thesaurus.com/) are now in your terminal, with [rich](https://github.com/Textualize/rich) output.
 
@@ -42,10 +43,8 @@ _Note: Be aware when this code was published. If the site will be updated in the
 
 ## Dependencies
 
-- [requests](https://pypi.org/project/requests/)
-- [beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
 - [rich](https://pypi.org/project/rich/)
-- [lxml](https://pypi.org/project/lxml/)
+- [gazpacho](https://pypi.org/project/gazpacho/)
 
 ## License
 
