@@ -1,7 +1,6 @@
 import argparse
 from synonym_cli.cli import Synonym
-
-__version__ = "0.0.4"
+from synonym_cli import __version__
 
 # parse arguments
 ap = argparse.ArgumentParser()

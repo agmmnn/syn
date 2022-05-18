@@ -1,5 +1,5 @@
 from setuptools import setup
-import synonym_cli.__main__ as m
+from synonym_cli import __version__ as VERSION
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
@@ -7,7 +7,6 @@ with open("README.md", "r") as fh:
 with open("requirements.txt", "r") as file:
     requires = [line.strip() for line in file.readlines()]
 
-VERSION = m.__version__
 DESCRIPTION = "Synonyms and antonyms of words from Thesaurus are now in your terminal, with rich output."
 
 setup(
