@@ -1,7 +1,7 @@
 from setuptools import setup
 from synonym_cli import __version__ as VERSION
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 with open("requirements.txt", "r") as file:
@@ -12,7 +12,11 @@ DESCRIPTION = "Synonyms and antonyms of words from Thesaurus are now in your ter
 setup(
     name="synonym-cli",
     version=VERSION,
-    url="https://github.com/agmmnn/synonym",
+    url="https://github.com/agmmnn/synonym-cli",
+    project_urls={
+        "Changelog": "https://github.com/agmmnn/synonym-cli/releases",
+        "Source": "https://github.com/agmmnn/synonym-cli",
+    },
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type="text/markdown",
