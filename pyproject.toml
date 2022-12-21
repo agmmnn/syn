@@ -1,0 +1,42 @@
+[tool.poetry]
+authors = ["agmmnn <agmmnn@gmail.com>"]
+description = "Synonyms and antonyms of words from Thesaurus are now in your terminal, with rich output."
+homepage = "https://github.com/agmmnn/synonym-cli"
+repository = "https://github.com/agmmnn/synonym-cli"
+name = "synonym-cli"
+keywords = ["synonym", "antonym", "thesaurus", "cli"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Topic :: Utilities",
+]
+packages = [{ include = "synonym_cli" }]
+readme = "README.md"
+version = "0.1.0"
+
+[tool.poetry.urls]
+Changelog = "https://github.com/agmmnn/synonym-cli/releases"
+Source = "https://github.com/agmmnn/synonym-cli"
+"Bug Tracker" = "https://github.com/agmmnn/synonym-cli/issues"
+
+[tool.poetry.dependencies]
+gazpacho = "^1.1"
+python = "^3.7"
+requests = "^2.28.1"
+rich = "^12.6.0"
+importlib-metadata = "^5.2.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.12.0"
+
+
+[tool.poetry.scripts]
+syn = "synonym_cli.__main__:cli"
+
+[tool.black]
+includes = "synonym_cli"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
