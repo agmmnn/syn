@@ -1,6 +1,11 @@
 import argparse
-from synonym_cli.cli import Synonym
-from synonym_cli import __version__
+from importlib_metadata import version, metadata
+
+from .cli import Synonym
+from .tur import tur_main
+from .altervista import alter_main
+from .settings import settings_set, settings_get, settings_show
+
 
 # parse arguments
 ap = argparse.ArgumentParser()
@@ -17,13 +22,57 @@ ap.add_argument(
     default=False,
     help="returns plain text output",
 )
-ap.add_argument("-v", "--version", action="version", version="%(prog)s v" + __version__)
+ap.add_argument(
+    "-l",
+    "--lang",
+    type=str,
+    help="<language>",
+)
+ap.add_argument("--setkey", type=str, help="set apikey for altervista api")
+ap.add_argument(
+    "--setlang",
+    type=str,
+    help=f"set default language",
+)
+ap.add_argument(
+    "--show",
+    action="store_true",
+    default=False,
+    help="show settings file",
+)
+ap.add_argument(
+    "-v",
+    "--version",
+    action="version",
+    version=f"{metadata('synonym-cli')['Name']} {version('synonym-cli')}",
+)
 args = ap.parse_args()
 
 
 def cli():
-    word = "".join(args.word)
-    Synonym(word, args.plain)
+    if args.setkey:
+        settings_set("altervista_apikey", args.setkey)
+        print("api key added successfully.")
+        exit()
+    if args.setlang:
+        settings_set("default_lang", args.setlang)
+        print("default language is: " + args.setlang)
+        exit()
+    if args.show:
+        settings_show()
+        exit()
+
+    lang = args.lang if args.lang else settings_get("default_lang")
+    word = " ".join(args.word)
+    if word == "":
+        print("enter a word...")
+        exit()
+    if lang == "en":
+        Synonym(word, args.plain)
+    elif lang == "tr":
+        tur_main(word)
+    else:
+        alter_main(word, lang)
 
 
 if __name__ == "__main__":
