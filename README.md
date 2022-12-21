@@ -1,17 +1,8 @@
-![screenshot](https://user-images.githubusercontent.com/16024979/162848437-8da9d5d4-a234-44d3-94d8-048f92b015a6.png)
+<div align="center"><img src="https://user-images.githubusercontent.com/16024979/162848437-8da9d5d4-a234-44d3-94d8-048f92b015a6.png" alt="syn"><a alt="Github" href="https://github.com/agmmnn/syn"><img alt="GitHub release" src="https://img.shields.io/github/v/release/agmmnn/syn"></a> <a href="https://pypi.org/project/synonym-cli/"><img alt="PyPI" src="https://img.shields.io/pypi/v/synonym-cli"></a></div>
 
-<div align="center">
-<a alt="Github" href="https://github.com/agmmnn/syn"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/agmmnn/synonym-cli"></a>
-<a href="https://pypi.org/project/synonym-cli/"><img alt="PyPI" src="https://img.shields.io/pypi/v/synonym-cli"></a>
-</div>
+# 🌾syn
 
-# synonym-cli
-
-<div align="center">
-
-Synonyms and antonyms of words from [Thesaurus.com](https://www.thesaurus.com/), [AlterVista](https://thesaurus.altervista.org/openapi) are now in your terminal, with [rich](https://github.com/Textualize/rich) output.
-
-</div>
+Get synonyms and antonyms of words from [Thesaurus.com](https://www.thesaurus.com/), [AlterVista](https://thesaurus.altervista.org/openapi) in your terminal, with [rich](https://github.com/Textualize/rich) output.
 
 # Install:
 
