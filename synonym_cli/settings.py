@@ -3,7 +3,7 @@ import json
 
 
 default_settings = {
-    "altervista_apikey": "xxxxxxxxxxxxxxxxxxxx",
+    "altervista_apikey": "",
     "default_lang": "en",
 }
 
@@ -18,6 +18,8 @@ config_file = os.path.join(config_folder, "settings.json")
 
 
 def settings_get(key: str = None):
+    if not settings_file_exist():
+        settings_file_create()
     try:
         with open(config_file, "r") as f:
             settings = json.load(f)
@@ -36,12 +38,6 @@ def settings_set(key, value) -> None:
         f.close()
 
 
-def settings_file_exist() -> bool:
-    if not os.path.isfile(config_file):
-        return False
-    return True
-
-
 def settings_file_create() -> None:
     if not settings_file_exist():
         if not os.path.exists(config_folder):
@@ -49,6 +45,12 @@ def settings_file_create() -> None:
 
         with open(config_file, "w") as f:
             json.dump(default_settings, f)
+
+
+def settings_file_exist() -> bool:
+    if not os.path.isfile(config_file):
+        return False
+    return True
 
 
 def settings_file_remove() -> None:

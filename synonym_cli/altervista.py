@@ -33,10 +33,10 @@ def alter_main(word, lang):
     apikey = settings_get("altervista_apikey")
     if apikey == "":
         print("you need altervista apikey to use this feature.")
-        print("• if you have an apikey, use: [cyan]--setapikey <apikey>[/]")
         print(
-            "• if you don't have any apikey yet, get a free key from: [cyan link=https://thesaurus.altervista.org/mykey]https://thesaurus.altervista.org/mykey[/]"
+            "• if you don't have apikey yet, get a free key from: [cyan link=https://thesaurus.altervista.org/mykey]https://thesaurus.altervista.org/mykey[/]"
         )
+        print("• if you have an apikey, use: [cyan]--setkey <apikey>[/]")
         exit()
 
     url = f"{api_base}?word={quote(word)}&language={lang_code}&key={apikey}&output=json"
