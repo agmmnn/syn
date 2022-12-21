@@ -1,8 +1,8 @@
 [tool.poetry]
 authors = ["agmmnn <agmmnn@gmail.com>"]
 description = "Synonyms and antonyms of words from Thesaurus are now in your terminal, with rich output."
-homepage = "https://github.com/agmmnn/synonym-cli"
-repository = "https://github.com/agmmnn/synonym-cli"
+homepage = "https://github.com/agmmnn/syn"
+repository = "https://github.com/agmmnn/syn"
 name = "synonym-cli"
 keywords = ["synonym", "antonym", "thesaurus", "cli"]
 classifiers = [
@@ -16,9 +16,9 @@ readme = "README.md"
 version = "0.1.0"
 
 [tool.poetry.urls]
-Changelog = "https://github.com/agmmnn/synonym-cli/releases"
-Source = "https://github.com/agmmnn/synonym-cli"
-"Bug Tracker" = "https://github.com/agmmnn/synonym-cli/issues"
+Changelog = "https://github.com/agmmnn/syn/releases"
+Source = "https://github.com/agmmnn/syn"
+"Bug Tracker" = "https://github.com/agmmnn/syn/issues"
 
 [tool.poetry.dependencies]
 gazpacho = "^1.1"

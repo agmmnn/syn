@@ -1,7 +1,7 @@
 ![screenshot](https://user-images.githubusercontent.com/16024979/162848437-8da9d5d4-a234-44d3-94d8-048f92b015a6.png)
 
 <div align="center">
-<a alt="Github" href="https://github.com/agmmnn/synonym-cli"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/agmmnn/synonym-cli"></a>
+<a alt="Github" href="https://github.com/agmmnn/syn"><img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/agmmnn/synonym-cli"></a>
 <a href="https://pypi.org/project/synonym-cli/"><img alt="PyPI" src="https://img.shields.io/pypi/v/synonym-cli"></a>
 </div>
 
@@ -9,7 +9,7 @@
 
 <div align="center">
 
-Synonyms and antonyms of words from [Thesaurus.com](https://www.thesaurus.com/) and other sources are now in your terminal, with [rich](https://github.com/Textualize/rich) output.
+Synonyms and antonyms of words from [Thesaurus.com](https://www.thesaurus.com/), [AlterVista](https://thesaurus.altervista.org/openapi) are now in your terminal, with [rich](https://github.com/Textualize/rich) output.
 
 </div>
 
