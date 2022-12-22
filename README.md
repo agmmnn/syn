@@ -1,6 +1,6 @@
 <div align="center"><img src="https://user-images.githubusercontent.com/16024979/162848437-8da9d5d4-a234-44d3-94d8-048f92b015a6.png" alt="syn"><a alt="Github" href="https://github.com/agmmnn/syn"><img alt="GitHub release" src="https://img.shields.io/github/v/release/agmmnn/syn"></a> <a href="https://pypi.org/project/synonym-cli/"><img alt="PyPI" src="https://img.shields.io/pypi/v/synonym-cli"></a></div>
 
-# 🌾syn
+# 🌾 syn
 
 Get synonyms and antonyms of words from [Thesaurus.com](https://www.thesaurus.com/), [AlterVista](https://thesaurus.altervista.org/openapi) in your terminal, with [rich](https://github.com/Textualize/rich) output.
 
@@ -16,43 +16,22 @@ pip install synonym-cli
 syn <word>
 ```
 
-```
-$ syn nominate
-┌──────────────────────────────────────────────────────────────────────────────────┐
-│ ❯ designate, select (verb)                                                       │
-├──────────────────────────────────────────────────────────────────────────────────┤
-│ 🔵synonyms: appoint, assign, choose, decide, draft, elect, elevate, name,        │
-│ present, propose, recommend, submit, suggest, tap, call, commission, denominate, │
-│ empower, intend, make, mean, offer, proffer, purpose, slate, slot, specify,      │
-│ tender, term, cognominate, put down for, put up, tab                             │
-│                                                                                  │
-│ 🟤antonyms: condemn, dissuade, ignore, refuse, reject, deny, discourage, stop,   │
-│ take back, pass over                                                             │
-└──────────────────────────────────────────────────────────────────────────────────┘
+### Explore Mode
 
-```
+Returns more particular results about the given word. Uses [Datamuse API](https://www.datamuse.com/api/).
 
-## Different Languages `--lang`, `-l`
+`$ syn dominant -d`
+![](https://user-images.githubusercontent.com/16024979/209144722-897ae8b6-c0c5-4f62-bb09-27010e94b4b0.png)
 
-Multi-language support with Thesaurus AlterVista. API key is required, if you don't have any apikey yet, get a free key from, [thesaurus.altervista.org/openapi](https://thesaurus.altervista.org/openapi).
+### Other Languages
 
-```
-$ syn -l es expresión
-╭─┬──────────────────────────────────┬─┬──────────────────────────────────╮
-│-│elocución, dicción, estilo        │-│exteriorización, manifestación,   │
-│ │                                  │ │revelación, comunicación          │
-│-│gesto, rostro, cara, semblante,   │-│locución, frase, dicho, giro      │
-│ │aire, aspecto                     │ │                                  │
-╰─┴──────────────────────────────────┴─┴──────────────────────────────────╯
+For other languages you can use `--lang`, `-l` command. To use this feature, you need to get an api key from [here](https://thesaurus.altervista.org/openapi).
 
-$ syn -l ru фраза
-╭─────────┬────────────────────────────────────────┬────────────────┬─────╮
-│(синоним)│речь, слово, предложение, спич, тост,   │(сходный термин)│слово│
-│         │здравица, аллокуция, диатриба, рацея,   │                │     │
-│         │тирада, филиппика, изложение, слог,     │                │     │
-│         │стиль, перо                             │                │     │
-╰─────────┴────────────────────────────────────────┴────────────────┴─────╯
-```
+`$ syn -l fr belle`
+![](https://user-images.githubusercontent.com/16024979/209144768-0cde6709-65d9-4142-9eae-bb4bc38e4a13.png)
+
+`$ syn -l ru фраза`
+![](https://user-images.githubusercontent.com/16024979/209144765-abca9b54-5495-4295-98f7-15acdbde7623.png)
 
 > AlterVista's Thesaurus API supports the following languages:
 
@@ -64,14 +43,9 @@ You can set the default language with the `--setlang <lang_code>` argument, so y
 
 ```
 $ syn --setlang fr
+> default language is: fr
 $ syn belle
-╭──────────────┬──────────────────────────────────────────────────────────╮
-│(Adjectif Nom)│adorable, admirable, brillante, charmante, céleste,       │
-│              │délicate, divine, délicieuse, éblouissante, élégante,     │
-│              │éclatante, exquise, féerique, harmonieuse, agréable,      │
-│              │ajustée, accordée, équilibrée, eurythmique, mélodieuse,   │
-│              │musicale, ordonnée, proportionnée, symétrique             │
-╰──────────────┴──────────────────────────────────────────────────────────╯
+> ...
 ```
 
 ## Arguments
@@ -85,3 +59,7 @@ $ syn belle
   --show          show settings file
   -v, --version   show program's version number and exit
 ```
+
+# Contrubuting
+
+Contributions are welcome. If you want to contribute to this list send a pull request or just open a new issue.
