@@ -5,7 +5,7 @@ from .cli import Synonym
 from .tur import tur_main
 from .altervista import alter_main
 from .settings import settings_set, settings_get, settings_show
-
+from .datamuse import DataMuse
 
 # parse arguments
 ap = argparse.ArgumentParser()
@@ -35,6 +35,13 @@ ap.add_argument(
     help=f"set default language",
 )
 ap.add_argument(
+    "-d",
+    "--datamuse",
+    action="store_true",
+    default=False,
+    help="show datamuse",
+)
+ap.add_argument(
     "--show",
     action="store_true",
     default=False,
@@ -44,7 +51,7 @@ ap.add_argument(
     "-v",
     "--version",
     action="version",
-    version=f"{metadata('synonym-cli')['Name']} {version('synonym-cli')}",
+    version=f"🌾syn {version('synonym-cli')}",
 )
 args = ap.parse_args()
 
@@ -66,6 +73,9 @@ def cli():
     word = " ".join(args.word)
     if word == "":
         print("enter a word...")
+        exit()
+    if args.datamuse:
+        DataMuse(word)
         exit()
     if lang == "en":
         Synonym(word, args.plain)

@@ -5,27 +5,26 @@ from rich.table import Table
 from .settings import settings_get
 
 api_base = "https://thesaurus.altervista.org/thesaurus/v1"
+lang_dict = {
+    "cs": "cs_CZ",
+    "da": "da_DK",
+    "de": "de_DE",
+    "el": "el_GR",
+    "en": "en_US",
+    "es": "es_ES",
+    "fr": "fr_FR",
+    "hu": "hu_HU",
+    "it": "it_IT",
+    "no": "no_NO",
+    "pl": "pl_PL",
+    "pt": "pt_PT",
+    "ro": "ro_RO",
+    "ru": "ru_RU",
+    "sk": "sk_SK",
+}
 
 
 def alter_main(word, lang):
-    lang_dict = {
-        "cs": "cs_CZ",
-        "da": "da_DK",
-        "de": "de_DE",
-        "el": "el_GR",
-        "en": "en_US",
-        "es": "es_ES",
-        "fr": "fr_FR",
-        "hu": "hu_HU",
-        "it": "it_IT",
-        "no": "no_NO",
-        "pl": "pl_PL",
-        "pt": "pt_PT",
-        "ro": "ro_RO",
-        "ru": "ru_RU",
-        "sk": "sk_SK",
-    }
-
     if lang not in lang_dict:
         print("incorrect language code: " + lang)
         exit()
@@ -73,10 +72,10 @@ def alter_main(word, lang):
         table.add_row(list_result[0][0], ", ".join(list_result[0][1]))
         print(table)
         return
-    even = True if len(list_result) % 2 == 0 else False
+    even = len(list_result) % 2
     item = []
     for x, i in enumerate(list_result):
-        if (x + 1 == len(list_result)) and (even == False):
+        if (x + 1 == len(list_result)) and even:
             table.add_row(i[0], ", ".join(i[1]), "", "")
             break
         elif x % 2 == 0:
