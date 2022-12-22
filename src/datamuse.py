@@ -4,6 +4,7 @@ from rich import print, box
 from rich.table import Table
 from json import loads
 from aiohttp import ClientSession
+from urllib.parse import urlencode
 
 
 class DataMuse:
@@ -29,10 +30,12 @@ class DataMuse:
     async def fetch_all(self, session):
         dic = {
             "words": {
-                "ml": "🔡[green]synonyms/similars: ",
+                "ml": "🔡[green]similars: ",
+                "rel_syn": "🔵[green]synonyms: ",
+                "rel_ant": "🟤[green]antonyms: ",
+                "rel_trg": "💭[green]evocative: ",
                 "sl": "📣[green]sound\[saʊnd]: ",
                 "sp": "🧮[green]similar spelling: ",
-                "rel_trg": "💭[green]evocative: ",
                 "rel_rhy": "👂[green]rhymic: ",
                 "rel_jjb": f"[green]___ + [i]{self.word}[/]: ",
                 "rel_jja": f"[green][i]{self.word}[/] + ___: ",
@@ -40,9 +43,13 @@ class DataMuse:
             "sug": {"s": f"[green][i]{self.word}[/]...:"},
         }
         tasks = []
+        base_url = "https://api.datamuse.com"
         for i in dic:
             for j in dic[i]:
-                url = f"https://api.datamuse.com/{i}?{j}={self.word}&max={self.max}&topics={self.topics}"
+                url_args = urlencode(
+                    {j: self.word, "max": self.max, "topics": self.topics}
+                )
+                url = f"{base_url}/{i}?{url_args}"
                 task = asyncio.create_task(self.fetch(session, url))
                 tasks.append(task)
         results = await asyncio.gather(*tasks)
@@ -56,30 +63,24 @@ class DataMuse:
                         word_list.append(results[idx]["word"])
                     else:
                         continue
-                table = Table(box=box.MINIMAL, expand=True, padding=0)
+                table = Table(box=box.SIMPLE, expand=True, padding=0)
                 table.add_column(dic[i][j])
-                table.add_row(", ".join(word_list))
-                tables.append(table)
+                row_words = ", ".join(word_list)
+                table.add_row("[cyan3]" + row_words)
+                if row_words:
+                    tables.append(table)
                 idx += 1
+
         topics = self.topics.split(",")
-        middle_text = f"""
-
-{self.word}{("🪢("+" • ".join(topics)+")") if topics!=[""] else ""}
-
-        """
-
-        middle = Table(box=None, show_header=False, expand=True, padding=0)
-        middle.add_column(justify="center")
-        middle.add_row(middle_text)
-
-        grid1 = Table.grid(padding=0, expand=True)
-        grid1.add_row(tables[0], tables[3])
-        print(grid1)
-
-        grid2 = Table.grid(padding=0, expand=True)
-        grid2.add_row(tables[1], tables[2], tables[4])
-        grid2.add_row(tables[5], tables[6], tables[7])
-        print(grid2)
+        desc = f'{self.word}{("🪢("+" • ".join(topics)+")") if topics!=[""] else ""}'
+        # Iterate through the tables in increments of 3
+        for i in range(0, len(tables), 3):
+            grid = Table.grid(padding=0, expand=True)
+            # Get the current group of 3 tables
+            group = tables[i : i + 3]
+            # Add the group to a row in the grid
+            grid.add_row(*group)
+            print(grid)
 
     async def main(self):
         async with ClientSession() as session:

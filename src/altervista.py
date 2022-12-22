@@ -2,6 +2,7 @@ import requests
 from urllib.parse import quote
 from rich import print, box
 from rich.table import Table
+from urllib.parse import urlencode
 from .settings import settings_get
 
 api_base = "https://thesaurus.altervista.org/thesaurus/v1"
@@ -38,7 +39,10 @@ def alter_main(word, lang):
         print("• if you have an apikey, use: [cyan]--setkey <apikey>[/]")
         exit()
 
-    url = f"{api_base}?word={quote(word)}&language={lang_code}&key={apikey}&output=json"
+    url_args = urlencode(
+        {"word": word, "language": lang_code, "key": apikey, "output": "json"}
+    )
+    url = f"{api_base}?{url_args}"
     js_data = requests.get(url).json()
 
     if "error" in js_data:
@@ -57,6 +61,7 @@ def alter_main(word, lang):
             .replace(" (similar term)", "")
             .replace(" (related term)", "")
             .replace(" (generic term)", "")
+            .replace(" (fig.)", "")
             .replace(" (antonym)", "(antonym)")
             .split("|"),
         ]
@@ -72,14 +77,15 @@ def alter_main(word, lang):
         table.add_row(list_result[0][0], ", ".join(list_result[0][1]))
         print(table)
         return
-    even = len(list_result) % 2
+
     item = []
     for x, i in enumerate(list_result):
-        if (x + 1 == len(list_result)) and even:
-            table.add_row(i[0], ", ".join(i[1]), "", "")
-            break
-        elif x % 2 == 0:
+        if not x % 2:
             item = [i[0], ", ".join(i[1])]
-            continue
-        table.add_row(item[0], item[1], i[0], ", ".join(i[1]))
+        else:
+            table.add_row(item[0], item[1], i[0], ", ".join(i[1]))
+
+    if len(list_result) % 2:
+        table.add_row(item[0], item[1], "", "")
+
     print(table)
