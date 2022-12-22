@@ -2,7 +2,7 @@
 
 # 🌾 syn
 
-Get synonyms and antonyms of words from [Thesaurus.com](https://www.thesaurus.com/), [AlterVista](https://thesaurus.altervista.org/openapi) in your terminal, with [rich](https://github.com/Textualize/rich) output.
+Get synonyms and antonyms of words from [Thesaurus.com](https://www.thesaurus.com/), [Datamuse API](https://www.datamuse.com/api/) and [AlterVista](https://thesaurus.altervista.org/) in your terminal, with [rich](https://github.com/Textualize/rich) output.
 
 # Install:
 
@@ -21,7 +21,7 @@ syn <word>
 Returns more particular results about the given word. Uses [Datamuse API](https://www.datamuse.com/api/).
 
 `$ syn dominant -d`
-![](https://user-images.githubusercontent.com/16024979/209144722-897ae8b6-c0c5-4f62-bb09-27010e94b4b0.png)
+![](https://user-images.githubusercontent.com/16024979/209148078-309ba28e-dc59-459f-9035-b6d3d75b710f.png)
 
 ### Other Languages
 
