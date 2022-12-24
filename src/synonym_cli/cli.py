@@ -9,10 +9,8 @@ from rich import print as rprint
 
 
 class Synonym:
-    def __init__(self, word, arg_plain=False):
+    def __init__(self, word):
         self.word = quote(word)
-        self.arg_plain = arg_plain
-        self.main()
 
     def req(self):
         conn = http.client.HTTPSConnection("www.thesaurus.com")
@@ -64,7 +62,8 @@ class Synonym:
                 rprint("[cyan]not found")
             exit()
 
-    def plain(self, dic):
+    def plain(self):
+        dic = self.req()
         for i in dic:
             print("❯" + i + " (" + dic[i]["pos"] + ")")
             syn_lst = []
@@ -80,7 +79,8 @@ class Synonym:
                 print("⬤antonyms: " + ", ".join(ant_lst))
                 print()
 
-    def rich(self, dic):
+    def rich(self):
+        dic = self.req()
         for i in dic:
             colors = {
                 "100": ["[rgb(252,232,197)]", "[/rgb(252,232,197)]"],
@@ -121,6 +121,3 @@ class Synonym:
             f"[grey42][link=https://www.thesaurus.com/browse/{self.word}]thesaurus.com↗[/link]",
             justify="right",
         )
-
-    def main(self):
-        self.plain(self.req()) if self.arg_plain else self.rich(self.req())

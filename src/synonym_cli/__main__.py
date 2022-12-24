@@ -78,7 +78,10 @@ def cli():
         DataMuse(word)
         exit()
     if lang == "en":
-        Synonym(word, args.plain)
+        if not args.plain:
+            Synonym(word).rich()
+        else:
+            Synonym(word).plain()
     elif lang == "tr":
         tur_main(word)
     else:
