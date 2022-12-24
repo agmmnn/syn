@@ -2,7 +2,7 @@
 name = "synonym-cli"
 description = "🌾Get synonyms and antonyms of words from Thesaurus.com and other sources in your terminal, with rich output."
 authors = ["agmmnn <agmmnn@gmail.com>"]
-version = "0.2.0"
+version = "0.2.1"
 readme = "README.md"
 homepage = "https://github.com/agmmnn/syn"
 repository = "https://github.com/agmmnn/syn"
@@ -13,7 +13,6 @@ classifiers = [
     "Environment :: Console",
     "Topic :: Utilities",
 ]
-packages = [{ include = "src" }]
 
 [tool.poetry.urls]
 Changelog = "https://github.com/agmmnn/syn/releases"
@@ -30,10 +29,10 @@ aiohttp = "^3.8.3"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
-
+pytest = "^7.2.0"
 
 [tool.poetry.scripts]
-syn = "src.__main__:cli"
+syn = "synonym_cli.__main__:cli"
 
 [tool.black]
 includes = "src"
