@@ -20,6 +20,8 @@ syn <word>
 
 Returns more particular results about the given word. Uses [Datamuse API](https://www.datamuse.com/api/).
 
+> for Web UI: https://wordwhisper.vercel.app
+
 `$ syn dominant -d`
 ![](https://user-images.githubusercontent.com/16024979/209148078-309ba28e-dc59-459f-9035-b6d3d75b710f.png)
 
