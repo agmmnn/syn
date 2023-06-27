@@ -2,7 +2,7 @@
 name = "synonym-cli"
 description = "🌾Get synonyms and antonyms of words from Thesaurus.com and other sources in your terminal, with rich output."
 authors = ["agmmnn <agmmnn@gmail.com>"]
-version = "0.2.1"
+version = "0.3.0"
 readme = "README.md"
 homepage = "https://github.com/agmmnn/syn"
 repository = "https://github.com/agmmnn/syn"
