@@ -5,11 +5,19 @@ def test_req(capsys):
     with capsys.disabled():
         word = Synonym("lighter")
         fetch = word.fetch_data()
-        data = word.parse_data(fetch)
-        results_data = data["tuna"]["resultsData"]
-        definition_data = results_data["definitionData"]
-        definitions = definition_data["definitions"]
+        definitions = word.parse_data(fetch)
 
+        # New structure: definitions is a list of dicts
         assert type(definitions) == list
-        assert definitions[0]["synonyms"][0]["targetSlug"] == "raft"
-        assert definitions[0]["synonyms"][0]["similarity"] == "100"
+        assert len(definitions) > 0
+
+        # Check first definition structure
+        first_def = definitions[0]
+        assert "synonyms" in first_def
+        assert type(first_def["synonyms"]) == list
+        assert len(first_def["synonyms"]) > 0
+
+        # Check first synonym
+        first_syn = first_def["synonyms"][0]
+        assert first_syn["term"] == "raft"
+        assert first_syn["similarity"] == "100"
