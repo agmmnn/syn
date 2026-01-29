@@ -25,28 +25,75 @@ class Synonym:
 
     def parse_data(self, response_text):
         soup = BeautifulSoup(response_text, "html.parser")
-        script = soup.find("script", {"id": "preloaded-state"})
-        if script is not None:
-            script_text = script.string
-            start = script_text.find("{")
-            end = script_text.rfind("}") + 1
-            json_text = script_text[start:end]
-            data = json.loads(json_text)
-            self.data = data
-            return data
+        definitions = []
+
+        # Find all definition blocks
+        def_blocks = soup.find_all("div", {"class": "definition-block"})
+
+        for block in def_blocks:
+            # Extract POS and Definition
+            header = block.find("div", {"class": "definition-header"})
+            pos_tag = header.find("div", {"class": "part-of-speech-label"})
+            pos = pos_tag.get_text(strip=True) if pos_tag else "N/A"
+
+            def_tag = header.find("div", {"class": "definition"})
+            definition = def_tag.get_text(strip=True) if def_tag else "N/A"
+
+            synonyms = []
+            antonyms = []
+
+            panels = block.find_all("section", {"class": "synonym-antonym-panel"})
+            for panel in panels:
+                label_div = panel.find("div", {"class": "synonym-antonym-panel-label"})
+                if not label_div:
+                    continue
+
+                label = label_div.get_text(strip=True)
+                is_synonym = "Synonyms" in label
+                is_antonym = "Antonyms" in label
+
+                if not (is_synonym or is_antonym):
+                    continue
+
+                # Find all word chips
+                word_chips = panel.find_all("a", {"class": "word-chip"})
+                for chip in word_chips:
+                    term = chip.get_text(strip=True)
+
+                    # Extract similarity from class
+                    classes = chip.get("class", [])
+                    similarity = "0"
+                    for cls in classes:
+                        if cls.startswith("similarity-"):
+                            similarity = cls.replace("similarity-", "")
+                            break
+
+                    item = {"term": term, "similarity": similarity}
+
+                    if is_synonym:
+                        synonyms.append(item)
+                    elif is_antonym:
+                        antonyms.append(item)
+
+            definitions.append(
+                {
+                    "definition": definition,
+                    "pos": pos,
+                    "synonyms": synonyms,
+                    "antonyms": antonyms,
+                }
+            )
+
+        self.data = definitions
+        return definitions
 
     def extract_info(self):
         if self.data:
-            results_data = self.data["tuna"]["resultsData"]
-            if results_data is None:
-                rprint(
-                    f"\n[cayn]Oops, it looks like thesaurus.com doesn't recognize '{self.word}' as a valid word."
-                )
-                return []
+            return self.format_definitions(self.data)
 
-            definition_data = results_data["definitionData"]
-            definitions = definition_data["definitions"]
-            return self.format_definitions(definitions)
+        rprint(
+            f"\n[cayn]Oops, it looks like thesaurus.com doesn't recognize '{self.word}' as a valid word."
+        )
         return []
 
     def format_definitions(self, definitions):
@@ -57,6 +104,7 @@ class Synonym:
             "-100": "[grey74]",
             "-50": "[grey58]",
             "-10": "[grey42]",
+            "0": "[grey42]",  # Default fallback
         }
 
         definitions_synonyms_antonyms = []
@@ -64,11 +112,11 @@ class Synonym:
             def_text = definition.get("definition", "N/A")
             pos = definition.get("pos", "N/A")
             synonyms = [
-                colors[syn["similarity"]] + syn["term"] + "[/]"
+                colors.get(syn["similarity"], "[grey42]") + syn["term"] + "[/]"
                 for syn in definition.get("synonyms", [])
             ]
             antonyms = [
-                colors[ant["similarity"]] + ant["term"] + "[/]"
+                colors.get(ant["similarity"], "[grey74]") + ant["term"] + "[/]"
                 for ant in definition.get("antonyms", [])
             ]
             definitions_synonyms_antonyms.append(
@@ -76,12 +124,37 @@ class Synonym:
             )
         return definitions_synonyms_antonyms
 
+    def plain(self):
+        response_text = self.fetch_data()
+        if response_text:
+            self.parse_data(response_text)
+            if not self.data:
+                print(
+                    f"Oops, it looks like thesaurus.com doesn't recognize '{self.word}' as a valid word."
+                )
+                return
+
+            for definition_data in self.data:
+                def_text = definition_data.get("definition", "N/A")
+                pos = definition_data.get("pos", "N/A")
+                print(f"{pos}. {def_text}")
+
+                synonyms = [s["term"] for s in definition_data.get("synonyms", [])]
+                if synonyms:
+                    print(f"synonyms: {', '.join(synonyms)}")
+
+                antonyms = [a["term"] for a in definition_data.get("antonyms", [])]
+                if antonyms:
+                    print(f"antonyms: {', '.join(antonyms)}")
+                print()
+
     def rich(self):
         response_text = self.fetch_data()
         if response_text:
             self.parse_data(response_text)
             definitions_synonyms_antonyms = self.extract_info()
-            self.display_definitions(definitions_synonyms_antonyms)
+            if definitions_synonyms_antonyms:
+                self.display_definitions(definitions_synonyms_antonyms)
 
     def display_definitions(self, definitions_synonyms_antonyms):
         console = Console()
