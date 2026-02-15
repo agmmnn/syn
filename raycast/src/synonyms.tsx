@@ -34,7 +34,7 @@ function WordDetailList({ word, definition }: { word: string; definition: Defini
             actions={
               <ActionPanel>
                 <Action.Push
-                  title="Look Up"
+                  title="Look up"
                   icon={Icon.MagnifyingGlass}
                   target={<SynonymsList initialWord={s.term} />}
                 />
@@ -54,7 +54,7 @@ function WordDetailList({ word, definition }: { word: string; definition: Defini
             actions={
               <ActionPanel>
                 <Action.Push
-                  title="Look Up"
+                  title="Look up"
                   icon={Icon.MagnifyingGlass}
                   target={<SynonymsList initialWord={s.term} />}
                 />

@@ -29,8 +29,8 @@
       ]
     },
     {
-      "name": "look-up",
-      "title": "Look Up",
+      "name": "synonyms-from-selection",
+      "title": "Synonyms from Selection",
       "description": "Look up the selected word in Synonyms",
       "mode": "no-view"
     },

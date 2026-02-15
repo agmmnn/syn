@@ -1,14 +1,15 @@
 <div align="center">
   <img src="https://github.com/agmmnn/syn/assets/16024979/7d40727c-cc35-4bea-9679-1cad46ae0850" alt="syn" width="400">
-  <br><br>
-  <p><strong>The word toolkit for your terminal, desktop, and browser.</strong></p>
-  <p>Synonyms, antonyms, rhymes, and related words — powered by <a href="https://www.thesaurus.com/">Thesaurus.com</a>, <a href="https://www.datamuse.com/api/">Datamuse</a>, and <a href="https://thesaurus.altervista.org/">AlterVista</a>.</p>
+
   <p>
     <a href="https://synnn.fly.dev"><img alt="Web App" src="https://img.shields.io/badge/web-synnn.fly.dev-c9a96e?style=flat-square"></a>
     <a href="https://pypi.org/project/synonym-cli/"><img alt="PyPI" src="https://img.shields.io/pypi/v/synonym-cli?style=flat-square&color=c9a96e"></a>
     <a href="https://pepy.tech/project/synonym-cli"><img alt="Downloads" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fpepy.tech%2Fapi%2Fv2%2Fprojects%2Fsynonym-cli&query=%24.total_downloads&style=flat-square&label=downloads&color=c9a96e"></a>
     <a href="https://github.com/agmmnn/syn/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-c9a96e?style=flat-square"></a>
   </p>
+
+  <p><strong>The word toolkit for your terminal, desktop (Raycast), and browser.</strong></p>
+  <p>Synonyms, antonyms, rhymes, and related words — powered by <a href="https://www.thesaurus.com/">Thesaurus.com</a>, <a href="https://www.datamuse.com/api/">Datamuse</a>, and <a href="https://thesaurus.altervista.org/">AlterVista</a>.</p>
 </div>
 
 <br>
@@ -84,24 +85,6 @@ Native macOS extension with three commands:
 | **Look Up**       | Select text anywhere, trigger with a hotkey — instantly opens Synonyms for that word.                                              |
 
 Both commands accept an inline argument and auto-fill from selected text or clipboard.
-
-## How It Works
-
-```
-                ┌─────────────────┐
-                │  Thesaurus.com  │  HTML scraping
-                └────────┬────────┘
-                         │
-┌─────┐   ┌─────────────┼─────────────┐
-│ syn │───│      Datamuse API         │  REST API
-└─────┘   │  similars · rhymes ·      │
-          │  sounds · spelling · ...  │
-          └─────────────┬─────────────┘
-                        │
-              ┌─────────┴─────────┐
-              │   AlterVista API  │  REST API · 16 languages
-              └───────────────────┘
-```
 
 ## Contributing
 
