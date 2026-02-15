@@ -24,20 +24,12 @@ export default function Command() {
           key={index}
           title={def.definition}
           subtitle={def.pos}
-          detail={
-            <List.Item.Detail markdown={getMarkdownContent(def, searchText)} />
-          }
+          detail={<List.Item.Detail markdown={getMarkdownContent(def, searchText)} />}
           actions={
             <ActionPanel>
               <Action.CopyToClipboard title="Copy Definition" content={def.definition} />
-              <Action.CopyToClipboard
-                title="Copy Synonyms"
-                content={def.synonyms.map((s) => s.term).join(", ")}
-              />
-              <Action.CopyToClipboard
-                title="Copy Antonyms"
-                content={def.antonyms.map((s) => s.term).join(", ")}
-              />
+              <Action.CopyToClipboard title="Copy Synonyms" content={def.synonyms.map((s) => s.term).join(", ")} />
+              <Action.CopyToClipboard title="Copy Antonyms" content={def.antonyms.map((s) => s.term).join(", ")} />
               <Action.OpenInBrowser url={`https://www.thesaurus.com/browse/${searchText}`} />
             </ActionPanel>
           }
@@ -48,13 +40,17 @@ export default function Command() {
 }
 
 function getMarkdownContent(def: Definition, word: string): string {
-  const synonyms = def.synonyms.map((s) => {
-    return s.similarity === "100" ? `**${s.term}**` : s.term;
-  }).join(", ");
+  const synonyms = def.synonyms
+    .map((s) => {
+      return s.similarity === "100" ? `**${s.term}**` : s.term;
+    })
+    .join(", ");
 
-  const antonyms = def.antonyms.map((s) => {
+  const antonyms = def.antonyms
+    .map((s) => {
       return s.similarity === "-100" ? `**${s.term}**` : s.term;
-  }).join(", ");
+    })
+    .join(", ");
 
   return `
 # ${word}

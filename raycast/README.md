@@ -10,6 +10,7 @@ A Raycast extension to look up synonyms, antonyms, and related words using Thesa
 ## Development
 
 1.  Install dependencies:
+
     ```bash
     npm install
     ```

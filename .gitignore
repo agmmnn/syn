@@ -10,3 +10,4 @@ dist
 *.manifest
 *.egg-info
 .DS_Store
+.venv

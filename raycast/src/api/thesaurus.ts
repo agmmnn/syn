@@ -19,10 +19,10 @@ export async function fetchThesaurusData(word: string): Promise<Definition[]> {
   try {
     const response = await fetch(url);
     if (!response.ok) {
-        if (response.status === 404) {
-            return [];
-        }
-        throw new Error(`Failed to fetch data: ${response.statusText}`);
+      if (response.status === 404) {
+        return [];
+      }
+      throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
     const html = await response.text();
     const $ = cheerio.load(html);

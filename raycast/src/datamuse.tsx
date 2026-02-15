@@ -21,20 +21,17 @@ export default function Command() {
       {data.map((categoryGroup: DatamuseResult, index: number) => (
         <List.Section key={index} title={categoryGroup.category}>
           {categoryGroup.items.map((word, wIndex) => (
-             <List.Item
-               key={wIndex}
-               title={word}
-               actions={
-                 <ActionPanel>
-                   <Action.CopyToClipboard title="Copy Word" content={word} />
-                   <Action.Paste title="Paste Word" content={word} />
-                   <Action.CopyToClipboard
-                      title="Copy All in Category"
-                      content={categoryGroup.items.join(", ")}
-                   />
-                 </ActionPanel>
-               }
-             />
+            <List.Item
+              key={wIndex}
+              title={word}
+              actions={
+                <ActionPanel>
+                  <Action.CopyToClipboard title="Copy Word" content={word} />
+                  <Action.Paste title="Paste Word" content={word} />
+                  <Action.CopyToClipboard title="Copy All in Category" content={categoryGroup.items.join(", ")} />
+                </ActionPanel>
+              }
+            />
           ))}
         </List.Section>
       ))}

@@ -50,8 +50,8 @@ export async function fetchDatamuseData(wordInput: string): Promise<DatamuseResu
       tasks.push(
         fetch(url)
           .then((res) => {
-             if (!res.ok) throw new Error(res.statusText);
-             return res.json() as Promise<DatamuseItem[]>;
+            if (!res.ok) throw new Error(res.statusText);
+            return res.json() as Promise<DatamuseItem[]>;
           })
           .then((data) => {
             const items = data
@@ -62,7 +62,7 @@ export async function fetchDatamuseData(wordInput: string): Promise<DatamuseResu
           .catch((err) => {
             console.error(`Error fetching ${category}:`, err);
             return { category, items: [] };
-          })
+          }),
       );
     }
   }

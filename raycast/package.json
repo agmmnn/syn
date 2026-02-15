@@ -1,13 +1,17 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "synonym-cli-raycast",
-  "title": "Synonym CLI",
-  "description": "Look up synonyms, antonyms, and related words using Thesaurus.com and Datamuse API.",
-  "icon": "command-icon.png",
-  "author": "agmmnn",
+  "name": "syn",
+  "title": "syn",
+  "description": "Look up synonyms, antonyms, and related words using Thesaurus.com and Datamuse.",
+  "icon": "extension-icon.png",
+  "author": "gokce",
+  "owner": "agmmnn",
+  "platforms": [
+    "macOS",
+    "Windows"
+  ],
   "categories": [
-    "Productivity",
-    "Writing"
+    "Other"
   ],
   "license": "MIT",
   "commands": [
@@ -27,23 +31,25 @@
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.79.0",
-    "@raycast/utils": "^1.16.3",
-    "cheerio": "^1.0.0-rc.12",
+    "@raycast/api": "^1.104.6",
+    "@raycast/utils": "^2.2.2",
+    "cheerio": "^1.2.0",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "@raycast/eslint-config": "^1.0.8",
-    "@types/node": "20.8.10",
-    "@types/react": "18.2.27",
-    "eslint": "^8.51.0",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2"
+    "@raycast/eslint-config": "^2.1.1",
+    "@types/node": "25.2.3",
+    "@types/react": "19.2.14",
+    "eslint": "^10.0.0",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3"
   },
   "scripts": {
-    "build": "raycast build",
-    "dev": "raycast develop",
-    "fix-lint": "raycast lint --fix",
-    "lint": "raycast lint"
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
+    "publish": "npx @raycast/api@latest publish"
   }
 }
