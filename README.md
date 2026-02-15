@@ -1,4 +1,7 @@
-<div align="center"><img src="https://github.com/agmmnn/syn/assets/16024979/7d40727c-cc35-4bea-9679-1cad46ae0850" alt="syn"><a alt="Github" href="https://github.com/agmmnn/syn"><img alt="GitHub release" src="https://img.shields.io/github/v/release/agmmnn/syn"></a> <a href="https://pypi.org/project/synonym-cli/"><img alt="PyPI" src="https://img.shields.io/pypi/v/synonym-cli"></a> <a href="https://pepy.tech/project/synonym-cli"><img alt="PyPI" src="https://pepy.tech/badge/synonym-cli"></a></div>
+<div align="center"><img width="2100" height="1181" alt="syn" src="https://github.com/user-attachments/assets/df4a823e-65b7-41d5-9a6f-efbc0aba04a2" />
+<a alt="Github" href="https://github.com/agmmnn/syn"><img alt="GitHub release" src="https://img.shields.io/github/v/release/agmmnn/syn"></a> <a href="https://pypi.org/project/synonym-cli/"><img alt="PyPI" src="https://img.shields.io/pypi/v/synonym-cli"></a> <a href="https://pepy.tech/project/synonym-cli"><img alt="PyPI" src="https://pepy.tech/badge/synonym-cli"></a></div>
+
+
 
 # 🌾 syn
 
@@ -65,3 +68,4 @@ $ syn belle
 # Contrubuting
 
 Contributions are welcome. If you want to contribute to this list send a pull request or just open a new issue.
+
