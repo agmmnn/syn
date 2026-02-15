@@ -72,6 +72,16 @@ function App() {
     return () => window.removeEventListener("popstate", handlePop);
   }, [search]);
 
+  const handleReset = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setInput("");
+    setQuery("");
+    setResults([]);
+    setHasSearched(false);
+    setFilter("All");
+    setQueryParam("");
+  };
+
   const handleSubmit = () => search(input);
 
   const handleWordClick = (word: string) => search(word);
@@ -89,12 +99,14 @@ function App() {
   const visibleCategories = results.map((r) => r.category);
 
   return (
-    <div className="app">
+    <div className={`app ${hasSearched ? "app--compact" : ""}`}>
       <header className="header">
-        <h1 className="header-title">
-          syn<span>🌾</span>
-        </h1>
-        <p className="header-subtitle">word explorer</p>
+        <a href="/" className="header-link" onClick={handleReset}>
+          <h1 className="header-title">
+            syn<span>🌾</span>
+          </h1>
+          <p className="header-subtitle">word explorer</p>
+        </a>
       </header>
 
       <SearchBar value={input} onChange={setInput} onSubmit={handleSubmit} />

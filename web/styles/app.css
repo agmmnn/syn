@@ -105,6 +105,25 @@ body::before {
 .header {
   text-align: center;
   padding: var(--space-2xl) 0 var(--space-xl);
+  transition: padding var(--duration) var(--ease);
+}
+
+.app--compact .header {
+  padding: var(--space-lg) 0 var(--space-sm);
+}
+
+.header-link {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.header-link:hover .header-title {
+  color: var(--accent);
+}
+
+.header-link:hover .header-subtitle {
+  color: var(--text);
 }
 
 .header-title {
@@ -114,6 +133,12 @@ body::before {
   letter-spacing: -0.02em;
   line-height: 1;
   color: var(--text);
+  transition: font-size var(--duration) var(--ease),
+              color var(--duration) var(--ease);
+}
+
+.app--compact .header-title {
+  font-size: 2rem;
 }
 
 .header-title span {
@@ -129,12 +154,23 @@ body::before {
   color: var(--text-muted);
   margin-top: var(--space-xs);
   letter-spacing: 0.01em;
+  transition: font-size var(--duration) var(--ease),
+              color var(--duration) var(--ease);
+}
+
+.app--compact .header-subtitle {
+  font-size: 0.85rem;
 }
 
 /* ─── Search ─── */
 .search-container {
   margin: var(--space-xl) auto var(--space-lg);
   max-width: 520px;
+  transition: margin var(--duration) var(--ease);
+}
+
+.app--compact .search-container {
+  margin-top: var(--space-md);
 }
 
 .search-field {
