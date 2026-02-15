@@ -1,11 +1,10 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "syn",
-  "title": "syn",
+  "title": "Syn 🌾",
   "description": "Look up synonyms, antonyms, and related words using Thesaurus.com and Datamuse.",
   "icon": "extension-icon.png",
   "author": "gokce",
-  "owner": "agmmnn",
   "platforms": [
     "macOS",
     "Windows"
@@ -16,25 +15,22 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "thesaurus",
-      "title": "Thesaurus",
-      "subtitle": "Search Synonyms",
-      "description": "Get synonyms and antonyms from Thesaurus.com",
+      "name": "synonyms",
+      "title": "Synonyms",
+      "description": "Look up synonyms and antonyms for a word",
       "mode": "view"
     },
     {
-      "name": "datamuse",
-      "title": "Datamuse",
-      "subtitle": "Explore Words",
-      "description": "Explore words using Datamuse API",
+      "name": "explore",
+      "title": "Explore Word",
+      "description": "Explore rhymes, similar sounds, related words, and more",
       "mode": "view"
     }
   ],
   "dependencies": {
     "@raycast/api": "^1.104.6",
     "@raycast/utils": "^2.2.2",
-    "cheerio": "^1.2.0",
-    "node-fetch": "^3.3.2"
+    "cheerio": "^1.2.0"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^2.1.1",

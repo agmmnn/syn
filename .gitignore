@@ -1,9 +1,8 @@
-raycast/node_modules
+node_modules
 __pycache__/
-
 .vscode
+.claude
 _other
-
 build
 dist
 *.spec
