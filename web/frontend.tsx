@@ -4,7 +4,7 @@ import { SearchBar } from "./components/SearchBar";
 import { FilterBar } from "./components/FilterBar";
 import { Results } from "./components/Results";
 import { Toast, useToast } from "./components/Toast";
-import { fetchAll, CategoryResult } from "./lib/datamuse";
+import { fetchAll, type CategoryResult } from "./lib/datamuse";
 import "./styles/app.css";
 
 function getQueryParam(): string {
@@ -24,7 +24,7 @@ function setQueryParam(word: string) {
 
 function App() {
   const [input, setInput] = useState(getQueryParam);
-  const [query, setQuery] = useState(getQueryParam);
+  const [, setQuery] = useState(getQueryParam);
   const [results, setResults] = useState<CategoryResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
