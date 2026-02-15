@@ -8,6 +8,12 @@
     Find <strong>synonyms</strong>, <strong>antonyms</strong>, <strong>rhymes</strong>, and <strong>related words</strong> instantly.
   </p>
 
+  <p><i>
+    Powered by 
+    <a href="https://www.thesaurus.com/">Thesaurus.com</a> · 
+    <a href="https://www.datamuse.com/api/">Datamuse</a> 
+  </i></p>
+
 </div>
 
 <div align="center">
