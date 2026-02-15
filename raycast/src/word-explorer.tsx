@@ -67,8 +67,8 @@ function WordExplorerList({ initialWord }: { initialWord?: string }) {
                     icon={Icon.MagnifyingGlass}
                     target={<WordExplorerList initialWord={word} />}
                   />
-                  <Action.CopyToClipboard title="Copy Word" content={word} shortcut={Keyboard.Shortcut.Common.Copy} />
-                  <Action.Paste title="Paste Word" content={word} shortcut={Keyboard.Shortcut.Common.Paste} />
+                  <Action.CopyToClipboard title="Copy Word" content={word} shortcut={{ modifiers: ["cmd"], key: "return" }} />
+                  <Action.Paste title="Paste Word" content={word} shortcut={{ modifiers: ["opt"], key: "return" }} />
                   <Action.CopyToClipboard
                     title="Copy All in Category"
                     content={group.items.join(", ")}

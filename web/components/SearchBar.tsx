@@ -53,8 +53,8 @@ export function SearchBar({ value, onChange, onSubmit }: SearchBarProps) {
         </button>
       </div>
       <p className="search-hint">
-        try <em>word:topic</em> for filtered results — e.g.{" "}
-        <em>cold:weather</em>
+        try <em>word:topic</em> for filtered results — e.g. <em>medium:size</em>
+        , <em>medium:media</em>
       </p>
     </div>
   );

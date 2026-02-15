@@ -1,40 +1,38 @@
 <div align="center">
-  <img src="https://github.com/agmmnn/syn/assets/16024979/7d40727c-cc35-4bea-9679-1cad46ae0850" alt="syn" width="400">
+
+<img alt="syn" src="https://github.com/user-attachments/assets/df4a823e-65b7-41d5-9a6f-efbc0aba04a2" />
+
+  <h2>The word lookup for your terminal, desktop, and browser.</h2>
 
   <p>
-    <a href="https://synnn.vercel.app"><img alt="Web App" src="https://img.shields.io/badge/web-synnn.vercel.app-c9a96e?style=flat-square"></a>
-    <a href="https://pypi.org/project/synonym-cli/"><img alt="PyPI" src="https://img.shields.io/pypi/v/synonym-cli?style=flat-square&color=c9a96e"></a>
-    <a href="https://pepy.tech/project/synonym-cli"><img alt="Downloads" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fpepy.tech%2Fapi%2Fv2%2Fprojects%2Fsynonym-cli&query=%24.total_downloads&style=flat-square&label=downloads&color=c9a96e"></a>
-    <a href="https://github.com/agmmnn/syn/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-c9a96e?style=flat-square"></a>
+    Find <strong>synonyms</strong>, <strong>antonyms</strong>, <strong>rhymes</strong>, and <strong>related words</strong> instantly.
   </p>
 
-  <h3>The word toolkit for your terminal, desktop, and browser.</h3>
-  <p>Synonyms, antonyms, rhymes, and related words — powered by <a href="https://www.thesaurus.com/">Thesaurus.com</a>, <a href="https://www.datamuse.com/api/">Datamuse</a>, and <a href="https://thesaurus.altervista.org/">AlterVista</a>.</p>
 </div>
-
-<br>
 
 <div align="center">
 
-|              **Terminal**              |            **Raycast**             |                     **Web**                      |
-| :------------------------------------: | :--------------------------------: | :----------------------------------------------: |
-| [`pip install synonym-cli`](#terminal) | [**Install Extension**](./raycast) | [**synnn.vercel.app**](https://synnn.vercel.app) |
+|      **Terminal (CLI)**      |                 **Raycast**                 |                    **Web App**                    |
+| :--------------------------: | :-----------------------------------------: | :-----------------------------------------------: |
+| [**Install CLI**](#terminal) | [**Install Extension**](#raycast-extension) | [**synnn.vercel.app↗**](https://synnn.vercel.app) |
 
 </div>
 
-<br>
-
 ## Terminal
 
-Feature-rich CLI to explore words directly from your command line.
+![synonym-cli](docs/terminal.png)
 
-### Installation
+Feature-rich CLI to explore words directly from your command line.
 
 ```bash
 pip install synonym-cli
 ```
 
-### Usage
+or
+
+```bash
+uv tool install synonym-cli
+```
 
 **Quick Lookup** (Synonyms & Antonyms via Thesaurus.com)
 
@@ -48,45 +46,44 @@ syn happy
 syn dominant -d
 ```
 
-<img src="https://github.com/agmmnn/syn/assets/16024979/a9ba9df5-bad0-421a-abea-163d11c37f1d" alt="Explore Mode Example" width="600">
+![Explore Mode Example](docs/terminal-d.png)
 
-**Multi-Language** (16 languages via AlterVista)
+> try `syn -d word:topic` for filtered results — e.g. `medium:size`, `medium:media`
 
-```bash
-syn -l fr belle   # French
-syn -l ru фраза   # Russian
-```
-
-<img src="https://user-images.githubusercontent.com/16024979/209144768-0cde6709-65d9-4142-9eae-bb4bc38e4a13.png" alt="Multi-Language Example" width="600">
-
-<details>
-<summary><strong>See all CLI options</strong></summary>
-
-```text
-syn <word> [options]
-
-  -d, --datamuse    explore mode (Datamuse API)
-  -p, --plain       plain text output
-  -l, --lang        target language code
-  --setkey          set AlterVista API key
-  --setlang         set default language
-  --show            show settings
-  -v, --version     show version
-```
-
-</details>
+_→ See detailed docs for CLI [here](./cli)._
 
 ## Raycast Extension
 
-Native macOS extension to find the right word without leaving your context.
+![synonym-raycast](raycast/metadata/syn-1.png)
 
-| Command           | Description                                                                  |
-| :---------------- | :--------------------------------------------------------------------------- |
-| **Synonyms**      | Synonyms & antonyms from Thesaurus.com with color-coded similarity tags.     |
-| **Word Explorer** | 10 Datamuse categories — similars, rhymes, sounds like, evocative, and more. |
-| **Look Up**       | Select text anywhere, trigger via hotkey for instant results.                |
+The Raycast extension to find the right word without leaving your context.
 
-👉 [**View Extension Details**](./raycast)
+### Commands
+
+#### Synonyms
+
+Synonyms & antonyms from Thesaurus.com with color-coded similarity tags.
+
+https://github.com/user-attachments/assets/cb40db75-693c-43ea-aaad-e79b2dbfc0e2
+
+> <kbd>Tab</kbd> to enter a word, <kbd>⏎</kbd> to drill down into a result, <kbd>⌫</kbd>/<kbd>␛</kbd> to go back.
+
+#### Synonym from Selection
+
+Select text anywhere, trigger via hotkey for instant results.
+
+https://github.com/user-attachments/assets/28d7d740-b068-42e5-bdc7-da08d786df67
+
+_→ See detailed docs for Raycast extension [here](./raycast)._
+
+> In this demo, <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd> is assigned as the hotkey.
+> To assign a hotkey, right click the command → Configure Command → Record Hotkey.
+
+#### Word Explorer
+
+10 Datamuse categories — similars, rhymes, sounds like, evocative, and more.
+
+https://github.com/user-attachments/assets/6aa2335b-c857-4766-8871-e845828364e7
 
 ## Web
 
