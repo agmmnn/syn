@@ -60,8 +60,6 @@ _→ See detailed docs for CLI [here](./cli)._
 
 ## Raycast Extension
 
-![synonym-raycast](raycast/metadata/syn-1.png)
-
 The Raycast extension to find the right word without leaving your context.
 
 ### Commands
@@ -80,8 +78,6 @@ Select text anywhere, trigger via hotkey for instant results.
 
 https://github.com/user-attachments/assets/28d7d740-b068-42e5-bdc7-da08d786df67
 
-_→ See detailed docs for Raycast extension [here](./raycast)._
-
 > In this demo, <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd> is assigned as the hotkey.
 > To assign a hotkey, right click the command → Configure Command → Record Hotkey.
 
@@ -90,6 +86,8 @@ _→ See detailed docs for Raycast extension [here](./raycast)._
 10 Datamuse categories — similars, rhymes, sounds like, evocative, and more.
 
 https://github.com/user-attachments/assets/6aa2335b-c857-4766-8871-e845828364e7
+
+_→ See detailed docs for Raycast extension [here](./raycast)._
 
 ## Web
 
