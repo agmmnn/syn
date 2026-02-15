@@ -1,12 +1,25 @@
-import { Action, ActionPanel, List } from "@raycast/api";
+import { Action, ActionPanel, Icon, Keyboard, LaunchProps, List } from "@raycast/api";
 import { useCachedPromise } from "@raycast/utils";
 import { useState } from "react";
 import { fetchDatamuseData, CATEGORIES, DatamuseResult } from "./api/datamuse";
 
 const ALL = "All";
 
-export default function Command() {
-  const [searchText, setSearchText] = useState("");
+const CATEGORY_ICONS: Record<string, Icon> = {
+  Similars: Icon.Switch,
+  Synonyms: Icon.CheckCircle,
+  Antonyms: Icon.Contrast,
+  Evocative: Icon.LightBulb,
+  "Sounds Like": Icon.SpeakerHigh,
+  "Similar Spelling": Icon.Pencil,
+  Rhymes: Icon.Music,
+  "Adjectives for word": Icon.Tag,
+  "Nouns for word": Icon.Lowercase,
+  Suggestions: Icon.Stars,
+};
+
+function WordExplorerList({ initialWord }: { initialWord?: string }) {
+  const [searchText, setSearchText] = useState(initialWord ?? "");
   const [category, setCategory] = useState(ALL);
 
   const filter = category === ALL ? undefined : category;
@@ -25,15 +38,16 @@ export default function Command() {
   return (
     <List
       isLoading={isLoading}
+      searchText={searchText}
       onSearchTextChange={setSearchText}
       searchBarPlaceholder="Explore a word (e.g. ocean or ocean:nature)"
       throttle
       searchBarAccessory={
         <List.Dropdown tooltip="Category" storeValue onChange={setCategory}>
-          <List.Dropdown.Item title="All" value={ALL} />
+          <List.Dropdown.Item title="All" value={ALL} icon={Icon.BulletPoints} />
           <List.Dropdown.Section title="Categories">
             {Object.keys(CATEGORIES).map((cat) => (
-              <List.Dropdown.Item key={cat} title={cat} value={cat} />
+              <List.Dropdown.Item key={cat} title={cat} value={cat} icon={CATEGORY_ICONS[cat] ?? Icon.Dot} />
             ))}
           </List.Dropdown.Section>
         </List.Dropdown>
@@ -45,13 +59,20 @@ export default function Command() {
             <List.Item
               key={wIndex}
               title={word}
+              icon={CATEGORY_ICONS[group.category] ?? Icon.Dot}
               actions={
                 <ActionPanel>
-                  <Action.CopyToClipboard title="Copy Word" content={word} />
-                  <Action.Paste title="Paste Word" content={word} />
+                  <Action.Push
+                    title="Explore Word"
+                    icon={Icon.MagnifyingGlass}
+                    target={<WordExplorerList initialWord={word} />}
+                  />
+                  <Action.CopyToClipboard title="Copy Word" content={word} shortcut={Keyboard.Shortcut.Common.Copy} />
+                  <Action.Paste title="Paste Word" content={word} shortcut={Keyboard.Shortcut.Common.Paste} />
                   <Action.CopyToClipboard
                     title="Copy All in Category"
                     content={group.items.join(", ")}
+                    shortcut={{ modifiers: ["cmd", "shift", "opt"], key: "c" }}
                   />
                 </ActionPanel>
               }
@@ -61,4 +82,8 @@ export default function Command() {
       ))}
     </List>
   );
+}
+
+export default function Command(props: LaunchProps<{ arguments: Arguments.WordExplorer }>) {
+  return <WordExplorerList initialWord={props.arguments.word || undefined} />;
 }

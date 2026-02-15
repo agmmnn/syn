@@ -1,4 +1,4 @@
-import { Action, ActionPanel, Color, List } from "@raycast/api";
+import { Action, ActionPanel, Color, Keyboard, LaunchProps, List } from "@raycast/api";
 import { useCachedPromise } from "@raycast/utils";
 import { useState } from "react";
 import { fetchThesaurusData, SynonymItem } from "./api/thesaurus";
@@ -22,8 +22,8 @@ function similarityColor(similarity: string): Color {
   }
 }
 
-export default function Command() {
-  const [searchText, setSearchText] = useState("");
+export default function Command(props: LaunchProps<{ arguments: Arguments.Synonyms }>) {
+  const [searchText, setSearchText] = useState(props.arguments.word ?? "");
 
   const { isLoading, data } = useCachedPromise(fetchThesaurusData, [searchText], {
     execute: searchText.length > 0,
@@ -35,6 +35,7 @@ export default function Command() {
   return (
     <List
       isLoading={isLoading}
+      searchText={searchText}
       onSearchTextChange={setSearchText}
       searchBarPlaceholder="Search for a word (e.g. happy)"
       throttle
@@ -85,7 +86,6 @@ export default function Command() {
           }
           actions={
             <ActionPanel>
-              <Action.CopyToClipboard title="Copy Definition" content={def.definition} />
               <Action.CopyToClipboard
                 title="Copy Synonyms"
                 content={def.synonyms.map((s: SynonymItem) => s.term).join(", ")}
@@ -93,8 +93,17 @@ export default function Command() {
               <Action.CopyToClipboard
                 title="Copy Antonyms"
                 content={def.antonyms.map((s: SynonymItem) => s.term).join(", ")}
+                shortcut={{ modifiers: ["cmd", "shift", "opt"], key: "c" }}
               />
-              <Action.OpenInBrowser url={`https://www.thesaurus.com/browse/${searchText}`} />
+              <Action.CopyToClipboard
+                title="Copy Definition"
+                content={def.definition}
+                shortcut={{ modifiers: ["opt"], key: "c" }}
+              />
+              <Action.OpenInBrowser
+                url={`https://www.thesaurus.com/browse/${searchText}`}
+                shortcut={Keyboard.Shortcut.Common.Open}
+              />
             </ActionPanel>
           }
         />

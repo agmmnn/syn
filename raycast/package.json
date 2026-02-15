@@ -18,13 +18,29 @@
       "name": "synonyms",
       "title": "Synonyms",
       "description": "Look up synonyms and antonyms for a word",
-      "mode": "view"
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "word",
+          "placeholder": "Word",
+          "type": "text",
+          "required": false
+        }
+      ]
     },
     {
-      "name": "explore",
-      "title": "Explore Word",
+      "name": "word-explorer",
+      "title": "Word Explorer",
       "description": "Explore rhymes, similar sounds, related words, and more",
-      "mode": "view"
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "word",
+          "placeholder": "Word",
+          "type": "text",
+          "required": false
+        }
+      ]
     }
   ],
   "dependencies": {
