@@ -1,7 +1,7 @@
-import { Action, ActionPanel, Color, Keyboard, LaunchProps, List } from "@raycast/api";
+import { Action, ActionPanel, Color, Icon, Keyboard, LaunchProps, List } from "@raycast/api";
 import { useCachedPromise } from "@raycast/utils";
 import { useState } from "react";
-import { fetchThesaurusData, SynonymItem } from "./api/thesaurus";
+import { fetchThesaurusData, Definition, SynonymItem } from "./api/thesaurus";
 
 function similarityColor(similarity: string): Color {
   switch (similarity) {
@@ -22,8 +22,55 @@ function similarityColor(similarity: string): Color {
   }
 }
 
-export default function Command(props: LaunchProps<{ arguments: Arguments.Synonyms }>) {
-  const [searchText, setSearchText] = useState(props.arguments.word ?? "");
+function WordDetailList({ word, definition }: { word: string; definition: Definition }) {
+  return (
+    <List navigationTitle={word}>
+      <List.Section title="Synonyms" subtitle={`${definition.synonyms.length} words`}>
+        {definition.synonyms.map((s: SynonymItem, i: number) => (
+          <List.Item
+            key={i}
+            title={s.term}
+            icon={{ source: Icon.Circle, tintColor: similarityColor(s.similarity) }}
+            actions={
+              <ActionPanel>
+                <Action.Push
+                  title="Look Up"
+                  icon={Icon.MagnifyingGlass}
+                  target={<SynonymsList initialWord={s.term} />}
+                />
+                <Action.CopyToClipboard title="Copy Word" content={s.term} shortcut={Keyboard.Shortcut.Common.Copy} />
+                <Action.Paste title="Paste Word" content={s.term} shortcut={Keyboard.Shortcut.Common.Paste} />
+              </ActionPanel>
+            }
+          />
+        ))}
+      </List.Section>
+      <List.Section title="Antonyms" subtitle={`${definition.antonyms.length} words`}>
+        {definition.antonyms.map((s: SynonymItem, i: number) => (
+          <List.Item
+            key={i}
+            title={s.term}
+            icon={{ source: Icon.Circle, tintColor: similarityColor(s.similarity) }}
+            actions={
+              <ActionPanel>
+                <Action.Push
+                  title="Look Up"
+                  icon={Icon.MagnifyingGlass}
+                  target={<SynonymsList initialWord={s.term} />}
+                />
+                <Action.CopyToClipboard title="Copy Word" content={s.term} shortcut={Keyboard.Shortcut.Common.Copy} />
+                <Action.Paste title="Paste Word" content={s.term} shortcut={Keyboard.Shortcut.Common.Paste} />
+              </ActionPanel>
+            }
+          />
+        ))}
+      </List.Section>
+    </List>
+  );
+}
+
+function SynonymsList({ initialWord }: { initialWord: string }) {
+  const [searchText, setSearchText] = useState(initialWord);
 
   const { isLoading, data } = useCachedPromise(fetchThesaurusData, [searchText], {
     execute: searchText.length > 0,
@@ -86,9 +133,15 @@ export default function Command(props: LaunchProps<{ arguments: Arguments.Synony
           }
           actions={
             <ActionPanel>
+              <Action.Push
+                title="Browse Words"
+                icon={Icon.List}
+                target={<WordDetailList word={searchText} definition={def} />}
+              />
               <Action.CopyToClipboard
                 title="Copy Synonyms"
                 content={def.synonyms.map((s: SynonymItem) => s.term).join(", ")}
+                shortcut={Keyboard.Shortcut.Common.Copy}
               />
               <Action.CopyToClipboard
                 title="Copy Antonyms"
@@ -110,4 +163,9 @@ export default function Command(props: LaunchProps<{ arguments: Arguments.Synony
       ))}
     </List>
   );
+}
+
+export default function Command(props: LaunchProps<{ arguments: Arguments.Synonyms }>) {
+  const initialWord = props.arguments.word || props.fallbackText || "";
+  return <SynonymsList initialWord={initialWord} />;
 }

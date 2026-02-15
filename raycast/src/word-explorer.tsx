@@ -85,5 +85,6 @@ function WordExplorerList({ initialWord }: { initialWord?: string }) {
 }
 
 export default function Command(props: LaunchProps<{ arguments: Arguments.WordExplorer }>) {
-  return <WordExplorerList initialWord={props.arguments.word || undefined} />;
+  const initialWord = props.arguments.word || props.fallbackText || undefined;
+  return <WordExplorerList initialWord={initialWord} />;
 }

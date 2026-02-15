@@ -29,6 +29,12 @@
       ]
     },
     {
+      "name": "look-up",
+      "title": "Look Up",
+      "description": "Look up the selected word in Synonyms",
+      "mode": "no-view"
+    },
+    {
       "name": "word-explorer",
       "title": "Word Explorer",
       "description": "Explore rhymes, similar sounds, related words, and more",
