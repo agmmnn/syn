@@ -1,6 +1,6 @@
 <div align="center">
+<img alt="syn" src="https://github.com/user-attachments/assets/b91b108d-b5fe-408e-8ea8-548ac41ad137" />
 
-<img alt="syn" src="https://github.com/user-attachments/assets/df4a823e-65b7-41d5-9a6f-efbc0aba04a2" />
 
   <h2>The word lookup for your terminal, desktop, and browser.</h2>
 
