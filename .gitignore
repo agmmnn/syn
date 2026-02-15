@@ -1,11 +1,12 @@
+node_modules
 __pycache__/
-
 .vscode
+.claude
 _other
-
 build
 dist
 *.spec
 *.manifest
 *.egg-info
 .DS_Store
+.venv

@@ -34,7 +34,7 @@ class DataMuse:
                 "rel_syn": "🔵[green]synonyms: ",
                 "rel_ant": "🟤[green]antonyms: ",
                 "rel_trg": "💭[green]evocative: ",
-                "sl": "📣[green]sound\[saʊnd]: ",
+                "sl": "📣[green]sound\\[saʊnd]: ",
                 "sp": "🧮[green]similar spelling: ",
                 "rel_rhy": "👂[green]rhymic: ",
                 "rel_jjb": f"[green]___ + [i]{self.word}[/]: ",

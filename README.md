@@ -1,71 +1,108 @@
-<div align="center"><img width="2100" height="1181" alt="syn" src="https://github.com/user-attachments/assets/df4a823e-65b7-41d5-9a6f-efbc0aba04a2" />
-<a alt="Github" href="https://github.com/agmmnn/syn"><img alt="GitHub release" src="https://img.shields.io/github/v/release/agmmnn/syn"></a> <a href="https://pypi.org/project/synonym-cli/"><img alt="PyPI" src="https://img.shields.io/pypi/v/synonym-cli"></a> <a href="https://pepy.tech/project/synonym-cli"><img alt="PyPI" src="https://pepy.tech/badge/synonym-cli"></a></div>
+<div align="center">
 
+<img alt="syn" src="https://github.com/user-attachments/assets/df4a823e-65b7-41d5-9a6f-efbc0aba04a2" />
 
+  <h2>The word lookup for your terminal, desktop, and browser.</h2>
 
-# 🌾 syn
+  <p>
+    Find <strong>synonyms</strong>, <strong>antonyms</strong>, <strong>rhymes</strong>, and <strong>related words</strong> instantly.
+  </p>
 
-Get synonyms and antonyms of words from [Thesaurus.com](https://www.thesaurus.com/), [Datamuse API](https://www.datamuse.com/api/) and [AlterVista](https://thesaurus.altervista.org/) in your terminal, with [rich](https://github.com/Textualize/rich) output.
+  <p><i>
+    Powered by 
+    <a href="https://www.thesaurus.com/">Thesaurus.com</a> · 
+    <a href="https://www.datamuse.com/api/">Datamuse</a> 
+  </i></p>
 
-# Install:
+</div>
 
-```
+<div align="center">
+
+|      **Terminal (CLI)**      |                 **Raycast**                 |                    **Web App**                    |
+| :--------------------------: | :-----------------------------------------: | :-----------------------------------------------: |
+| [**Install CLI**](#terminal) | [**Install Extension**](#raycast-extension) | [**synnn.vercel.app↗**](https://synnn.vercel.app) |
+
+</div>
+
+## Terminal
+
+![synonym-cli](docs/terminal.png)
+
+Feature-rich CLI to explore words directly from your command line.
+
+```bash
 pip install synonym-cli
 ```
 
-## Usage:
+or
 
-```
-syn <word>
-```
-
-### Explore Mode
-
-Returns more particular results about the given word. Uses [Datamuse API](https://www.datamuse.com/api/).
-
-> for Web UI: https://wordwhisper.vercel.app
-
-`$ syn dominant -d`
-![](https://github.com/agmmnn/syn/assets/16024979/a9ba9df5-bad0-421a-abea-163d11c37f1d)
-
-### Other Languages
-
-For other languages you can use `--lang`, `-l` command. To use this feature, you need to get an api key from [here](https://thesaurus.altervista.org/openapi).
-
-`$ syn -l fr belle`
-![](https://user-images.githubusercontent.com/16024979/209144768-0cde6709-65d9-4142-9eae-bb4bc38e4a13.png)
-
-`$ syn -l ru фраза`
-![](https://user-images.githubusercontent.com/16024979/209144765-abca9b54-5495-4295-98f7-15acdbde7623.png)
-
-> AlterVista's Thesaurus API supports the following languages:
-
-> Czech: `cs`, Danish: `da`, English (US): `en`, French: `fr`, German (Germany): `de`, German (Switzerland): `de`, Greek: `el`, Hungarian: `hu`, Italian: `it`, Norwegian: `no`, Polish: `pl`, Portuguese: `pt`, Romanian: `ro`, Russian: `ru`, Slovak: `sk`, Spanish: `es`.
-
-### Set Default Language
-
-You can set the default language with the `--setlang <lang_code>` argument, so you don't have to give the `-l` argument every time.
-
-```
-$ syn --setlang fr
-> default language is: fr
-$ syn belle
-> ...
+```bash
+uv tool install synonym-cli
 ```
 
-## Arguments
+**Quick Lookup** (Synonyms & Antonyms via Thesaurus.com)
 
-```
-  -h, --help      show this help message and exit
-  -p, --plain     returns plain text output
-  -l, --lang      <language>
-  --setkey        set apikey for altervista api
-  --setlang       set default language (currently default is 'en')
-  --show          show settings file
-  -v, --version   show program's version number and exit
+```bash
+syn happy
 ```
 
-# Contrubuting
+**Explore Mode** (Related words, rhymes, and more via Datamuse)
 
-Contributions are welcome. If you want to contribute to this list send a pull request or just open a new issue.
+```bash
+syn dominant -d
+```
 
+![Explore Mode Example](docs/terminal-d.png)
+
+> try `syn -d word:topic` for filtered results — e.g. `medium:size`, `medium:media`
+
+_→ See detailed docs for CLI [here](./cli)._
+
+## Raycast Extension
+
+![synonym-raycast](raycast/metadata/syn-1.png)
+
+The Raycast extension to find the right word without leaving your context.
+
+### Commands
+
+#### Synonyms
+
+Synonyms & antonyms from Thesaurus.com with color-coded similarity tags.
+
+https://github.com/user-attachments/assets/cb40db75-693c-43ea-aaad-e79b2dbfc0e2
+
+> <kbd>Tab</kbd> to enter a word, <kbd>⏎</kbd> to drill down into a result, <kbd>⌫</kbd>/<kbd>␛</kbd> to go back.
+
+#### Synonym from Selection
+
+Select text anywhere, trigger via hotkey for instant results.
+
+https://github.com/user-attachments/assets/28d7d740-b068-42e5-bdc7-da08d786df67
+
+_→ See detailed docs for Raycast extension [here](./raycast)._
+
+> In this demo, <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>U</kbd> is assigned as the hotkey.
+> To assign a hotkey, right click the command → Configure Command → Record Hotkey.
+
+#### Word Explorer
+
+10 Datamuse categories — similars, rhymes, sounds like, evocative, and more.
+
+https://github.com/user-attachments/assets/6aa2335b-c857-4766-8871-e845828364e7
+
+## Web
+
+**[synnn.vercel.app](https://synnn.vercel.app)** — A clean web interface to explore words.
+
+- Explore 10 categories from Datamuse.
+- Drill down by clicking any word.
+- Shareable URLs for specific words.
+
+## Contributing
+
+Contributions are welcome! Please [open an issue](https://github.com/agmmnn/syn/issues) or submit a pull request.
+
+## License
+
+[MIT](LICENSE)
