@@ -31,24 +31,21 @@ function App() {
   const [filter, setFilter] = useState("All");
   const { toast, show: showToast } = useToast();
 
-  const search = useCallback(
-    async (word: string) => {
-      const trimmed = word.trim();
-      if (!trimmed) return;
+  const search = useCallback(async (word: string) => {
+    const trimmed = word.trim();
+    if (!trimmed) return;
 
-      setQuery(trimmed);
-      setInput(trimmed);
-      setQueryParam(trimmed);
-      setLoading(true);
-      setHasSearched(true);
-      setFilter("All");
+    setQuery(trimmed);
+    setInput(trimmed);
+    setQueryParam(trimmed);
+    setLoading(true);
+    setHasSearched(true);
+    setFilter("All");
 
-      const data = await fetchAll(trimmed);
-      setResults(data);
-      setLoading(false);
-    },
-    [],
-  );
+    const data = await fetchAll(trimmed);
+    setResults(data);
+    setLoading(false);
+  }, []);
 
   // Initial load from URL
   useEffect(() => {
@@ -92,9 +89,7 @@ function App() {
   };
 
   const filteredResults =
-    filter === "All"
-      ? results
-      : results.filter((r) => r.category === filter);
+    filter === "All" ? results : results.filter((r) => r.category === filter);
 
   const visibleCategories = results.map((r) => r.category);
 
@@ -145,11 +140,19 @@ function App() {
       <footer className="footer">
         <p>
           powered by{" "}
-          <a href="https://www.datamuse.com/api/" target="_blank" rel="noopener">
+          <a
+            href="https://www.datamuse.com/api/"
+            target="_blank"
+            rel="noopener"
+          >
             Datamuse API
           </a>{" "}
           ·{" "}
-          <a href="https://github.com/agmmnn/syn" target="_blank" rel="noopener">
+          <a
+            href="https://github.com/agmmnn/syn"
+            target="_blank"
+            rel="noopener"
+          >
             GitHub
           </a>
         </p>

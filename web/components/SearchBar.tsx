@@ -34,15 +34,27 @@ export function SearchBar({ value, onChange, onSubmit }: SearchBarProps) {
           spellCheck={false}
           autoComplete="off"
         />
-        <button className="search-submit" onClick={onSubmit} aria-label="Search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <button
+          className="search-submit"
+          onClick={onSubmit}
+          aria-label="Search"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
           </svg>
         </button>
       </div>
       <p className="search-hint">
-        try <em>word:topic</em> for filtered results — e.g. <em>cold:weather</em>
+        try <em>word:topic</em> for filtered results — e.g.{" "}
+        <em>cold:weather</em>
       </p>
     </div>
   );

@@ -7,7 +7,11 @@ interface FilterBarProps {
   visibleCategories: string[];
 }
 
-export function FilterBar({ active, onChange, visibleCategories }: FilterBarProps) {
+export function FilterBar({
+  active,
+  onChange,
+  visibleCategories,
+}: FilterBarProps) {
   const allCategories = ["All", ...Object.keys(CATEGORIES)];
 
   return (
