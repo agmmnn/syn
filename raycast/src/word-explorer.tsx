@@ -1,4 +1,4 @@
-import { Action, ActionPanel, Icon, Keyboard, LaunchProps, List } from "@raycast/api";
+import { Action, ActionPanel, Icon, LaunchProps, List } from "@raycast/api";
 import { useCachedPromise } from "@raycast/utils";
 import { useState } from "react";
 import { fetchDatamuseData, CATEGORIES, DatamuseResult } from "./api/datamuse";
@@ -67,7 +67,11 @@ function WordExplorerList({ initialWord }: { initialWord?: string }) {
                     icon={Icon.MagnifyingGlass}
                     target={<WordExplorerList initialWord={word} />}
                   />
-                  <Action.CopyToClipboard title="Copy Word" content={word} shortcut={{ modifiers: ["cmd"], key: "return" }} />
+                  <Action.CopyToClipboard
+                    title="Copy Word"
+                    content={word}
+                    shortcut={{ modifiers: ["cmd"], key: "return" }}
+                  />
                   <Action.Paste title="Paste Word" content={word} shortcut={{ modifiers: ["opt"], key: "return" }} />
                   <Action.CopyToClipboard
                     title="Copy All in Category"

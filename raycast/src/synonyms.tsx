@@ -38,7 +38,11 @@ function WordDetailList({ word, definition }: { word: string; definition: Defini
                   icon={Icon.MagnifyingGlass}
                   target={<SynonymsList initialWord={s.term} />}
                 />
-                <Action.CopyToClipboard title="Copy Word" content={s.term} shortcut={{ modifiers: ["cmd"], key: "return" }} />
+                <Action.CopyToClipboard
+                  title="Copy Word"
+                  content={s.term}
+                  shortcut={{ modifiers: ["cmd"], key: "return" }}
+                />
                 <Action.Paste title="Paste Word" content={s.term} shortcut={{ modifiers: ["opt"], key: "return" }} />
               </ActionPanel>
             }
@@ -58,7 +62,11 @@ function WordDetailList({ word, definition }: { word: string; definition: Defini
                   icon={Icon.MagnifyingGlass}
                   target={<SynonymsList initialWord={s.term} />}
                 />
-                <Action.CopyToClipboard title="Copy Word" content={s.term} shortcut={{ modifiers: ["cmd"], key: "return" }} />
+                <Action.CopyToClipboard
+                  title="Copy Word"
+                  content={s.term}
+                  shortcut={{ modifiers: ["cmd"], key: "return" }}
+                />
                 <Action.Paste title="Paste Word" content={s.term} shortcut={{ modifiers: ["opt"], key: "return" }} />
               </ActionPanel>
             }
