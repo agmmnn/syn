@@ -15,23 +15,26 @@ export function FilterBar({
   const allCategories = ["All", ...Object.keys(CATEGORIES)];
 
   return (
-    <div className="filter-bar">
-      {allCategories.map((cat) => {
-        const isAll = cat === "All";
-        const hasResults = isAll || visibleCategories.includes(cat);
+    <section className="filter-panel">
+      <p className="filter-label">Refine the map</p>
+      <div className="filter-bar">
+        {allCategories.map((cat) => {
+          const isAll = cat === "All";
+          const hasResults = isAll || visibleCategories.includes(cat);
 
-        if (!isAll && !hasResults) return null;
+          if (!isAll && !hasResults) return null;
 
-        return (
-          <button
-            key={cat}
-            className={`filter-pill ${active === cat ? "active" : ""}`}
-            onClick={() => onChange(cat)}
-          >
-            {cat}
-          </button>
-        );
-      })}
-    </div>
+          return (
+            <button
+              key={cat}
+              className={`filter-pill ${active === cat ? "active" : ""}`}
+              onClick={() => onChange(cat)}
+            >
+              {cat}
+            </button>
+          );
+        })}
+      </div>
+    </section>
   );
 }

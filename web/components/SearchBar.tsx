@@ -8,6 +8,7 @@ interface SearchBarProps {
 
 export function SearchBar({ value, onChange, onSubmit }: SearchBarProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const inputId = "word-search";
 
   useEffect(() => {
     inputRef.current?.focus();
@@ -22,10 +23,14 @@ export function SearchBar({ value, onChange, onSubmit }: SearchBarProps) {
 
   return (
     <div className="search-container">
+      <label className="search-label" htmlFor={inputId}>
+        Search for a word
+      </label>
       <div className="search-field">
         <input
+          id={inputId}
           ref={inputRef}
-          type="text"
+          type="search"
           className="search-input"
           placeholder="explore a word…"
           value={value}
@@ -52,10 +57,13 @@ export function SearchBar({ value, onChange, onSubmit }: SearchBarProps) {
           </svg>
         </button>
       </div>
-      <p className="search-hint">
-        try <em>word:topic</em> for filtered results — e.g. <em>medium:size</em>
-        , <em>medium:media</em>
-      </p>
+      <div className="search-meta">
+        <p className="search-hint">
+          try <em>word:topic</em> for guided results, like{" "}
+          <em>medium:size</em> or <em>medium:media</em>
+        </p>
+        <span className="search-shortcut">Press Enter</span>
+      </div>
     </div>
   );
 }

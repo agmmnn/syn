@@ -20,18 +20,20 @@ export function Results({ results, onWordClick, onWordCopy }: ResultsProps) {
   return (
     <div className="results">
       {results.map((group, index) => (
-        <div
+        <section
           key={group.category}
           className="category-section"
-          style={{ animationDelay: `${index * 0.06}s` }}
+          style={{ animationDelay: `${index * 45}ms` }}
         >
           <div className="category-header">
-            <span
-              className="category-dot"
-              style={{ background: CATEGORY_COLORS[group.category] }}
-            />
-            <h2 className="category-name">{group.category}</h2>
-            <span className="category-count">{group.items.length}</span>
+            <div className="category-heading">
+              <span
+                className="category-dot"
+                style={{ background: CATEGORY_COLORS[group.category] }}
+              />
+              <h2 className="category-name">{group.category}</h2>
+            </div>
+            <span className="category-count">{group.items.length} words</span>
           </div>
           <div className="category-words">
             {group.items.map((word) => (
@@ -49,7 +51,7 @@ export function Results({ results, onWordClick, onWordCopy }: ResultsProps) {
               </button>
             ))}
           </div>
-        </div>
+        </section>
       ))}
     </div>
   );
